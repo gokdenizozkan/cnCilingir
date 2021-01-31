@@ -14,8 +14,7 @@ public class oyuncuEtkileşim : MonoBehaviour
     public arayüzEtkileşim arayüzEtkileşimYazışık = null; //aynı şekilde etkileşim alanındaki obje şayet bir ek arayüze bağlıysa, bir üstteki ile aynı amaçla kullanılır.
 
     [Header("Diğer")]
-    public bool tornavidaAlındı;
-    public oyuncuEnvanter oyuncuEnvanterYazışık;
+    public bool oldKeyAlındı;
 
 
 
@@ -47,6 +46,7 @@ public class oyuncuEtkileşim : MonoBehaviour
             {
                 etkiAlanObje = null;
                 arayüzEtkileşimYazışık = null;
+                objeEtkileşimYazışık = null;
             }
         }
 
@@ -65,13 +65,13 @@ public class oyuncuEtkileşim : MonoBehaviour
                 {
                     OyunKontrolYazışık.SahneDeğiştir("hall");
                 }
-                if (objeEtkileşimYazışık.envantereAlınabilir) //ve eğer etkileşilen obje "envantere alınabilir" ise
+                if (objeEtkileşimYazışık.hall2_sağButon)
                 {
-                    if (objeEtkileşimYazışık.elFeneri) //el feneri ise
-                    {
-                        objeEtkileşimYazışık.elFeneriYazışıkObjesi.gameObject.SetActive(true); //el feneri yazışığını aktive et
-                    }
-                    oyuncuEnvanterYazışık.EşyaEkle(etkiAlanObje); //etki alanındaki objeyi "envantere ekle"
+                    OyunKontrolYazışık.SahneDeğiştir("hall");
+                }
+                if (objeEtkileşimYazışık.hall_solButon)
+                {
+                    OyunKontrolYazışık.SahneDeğiştir("hall2");
                 }
             }
             //ARAYÜZ ETKİLEŞİM İSE
@@ -87,39 +87,5 @@ public class oyuncuEtkileşim : MonoBehaviour
         {
             arayüzEtkileşimYazışık.ArayüzKapa(); //arayüzEtkileşim yazışığındaki "ArayüzKapa" fonksiyonunu çalıştır.
         }
-        //DÜNYA ÜZERİNDE KİLİTLİ OBJE AÇMA
-        //açılabilir bir obje mi kontrol et
-        if (Input.GetMouseButtonDown(0) && objeEtkileşimYazışık.açılabilir)
-        {
-            //kilitli mi kontrol et
-            if (objeEtkileşimYazışık.kilitli)
-            {
-                //açmak için gerekli objeye oyuncu sahip mi, kontrol et
-                //aranan obje için envanteri ara, bulunursa kilidi aç
-                if (oyuncuEnvanterYazışık.EşyaBul(objeEtkileşimYazışık.gerekliObje))
-                {
-                    //eşya bulundu, aç
-                    oyuncuEnvanterYazışık.EşyaSil();
-                    objeEtkileşimYazışık.kilitli = false;
-                    UnityEngine.Debug.Log(objeEtkileşimYazışık.name + " kilidi açıldı.");
-                    if (objeEtkileşimYazışık.aletÇantası) //kilidi açılan obje bir alet çantası idi ise içerisindeki "tornavidayı" görünür kıl
-                    {
-                        objeEtkileşimYazışık.TornavidayıGörünürKıl(); //alet çantası içindeki tornavidayı görünür kıl
-                        objeEtkileşimYazışık.GörünmezKıl(); //kilidi açılan obje görünmez kıl (animasyon hazırlanana kadar bu şekilde kalabilir)
-                    }
-                }
-                else
-                {
-                    UnityEngine.Debug.Log(objeEtkileşimYazışık.name + " hala kilitli.");
-                }
-            }
-            else
-            {
-                //obje kilitli değil, açmaya geçebiliriz
-                UnityEngine.Debug.Log(objeEtkileşimYazışık.name + " açıldı.");
-                objeEtkileşimYazışık.Aç();
-            }
-        }
     }
-
 }

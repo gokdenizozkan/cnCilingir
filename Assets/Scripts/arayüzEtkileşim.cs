@@ -11,7 +11,7 @@ public class arayüzEtkileşim : MonoBehaviour
     public bool arayüzAçık = false;
 
     public OyunKontrol OyunKontrolYazışık;
-    public oyuncuEtkileşim oyuncuEtkileşimYazisik;
+    public oyuncuEtkileşim oyuncuEtkileşimYazışık;
     public short aşama = 0;  //0 -> normal, 1 -> memoryWipe 1. aşama, 2 -> 2. aşama
 
     [Header("Hall")]
@@ -39,7 +39,8 @@ public class arayüzEtkileşim : MonoBehaviour
         if (girdi == şifre) 
         {
             inputFieldObjesi.gameObject.SetActive(false);
-            ArayüzKapa()
+            ArayüzKapa();
+            oyuncuEtkileşimYazışık.oldKeyAlındı = true;
         }
     }
     public void ArayüzAç(bool[] kontrol) //etki alanındaki obje adı

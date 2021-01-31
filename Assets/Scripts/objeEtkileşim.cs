@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class objeEtkileşim : MonoBehaviour
 {
+    [Header("Navigation")]
     public bool merdiven_üstKattaki;
     public bool merdiven_altKattaki;
-    public bool envantereAlınabilir;        //eğer "doğru" ise obje envanterde tutulabilir.
-    public bool açılabilir;                 //eğer "doğru" ise obje açılabilir.
-    public bool kilitli;                    //eğer "doğru" ise obje kilitlidir ve etkileşime geçilemez.
-    public bool aletÇantası;                //eğer "doğru" ise obje, alet çantasıdır.
-    public bool elFeneri;
+    public bool hall_solButon;
+    public bool hall2_sağButon;
+    
+    [Header("Diğerleri")]
+    public bool sandık;                //eğer "doğru" ise obje, alet çantasıdır.
     public GameObject gerekliObje;          //etkileşim için gerekli eşya
-    public GameObject tornavidaObje;
-    public GameObject elFeneriYazışıkObjesi;
+    public GameObject oldKeyObje;
 
     public Animator anim;  
         
@@ -25,10 +25,5 @@ public class objeEtkileşim : MonoBehaviour
     public void Aç()
     {
         anim.SetBool("acik", true); //açılma animasyonu (şu an yok) 
-    }
-
-    public void TornavidayıGörünürKıl()
-    {
-        tornavidaObje.gameObject.SetActive(true);
     }
 }
