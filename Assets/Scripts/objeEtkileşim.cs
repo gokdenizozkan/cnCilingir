@@ -8,14 +8,7 @@ public class objeEtkileşim : MonoBehaviour
     public bool merdiven_üstKattaki;
     public bool merdiven_altKattaki;
     public bool hall_solButon;
-    public bool hall2_sağButon;
-    
-    [Header("Diğerleri")]
-    public bool sandık;                //eğer "doğru" ise obje, alet çantasıdır.
-    public GameObject gerekliObje;          //etkileşim için gerekli eşya
-    public GameObject oldKeyObje;
-
-    public Animator anim;  
+    public bool hall2_sağButon;  
         
     public void GörünmezKıl()
     {

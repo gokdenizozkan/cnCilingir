@@ -7,10 +7,6 @@ public class OyunKontrol : MonoBehaviour
 {
     public bool oyunBitti = false;
 
-    //oyunun bitme sebepleri
-    public bool soğuktanÖldün = false;
-    public bool yakalandın = false;
-    public bool kaçtın = false;
     public bool süreBitti = false;
 
     public void SahneDeğiştir(string sahne)
@@ -20,7 +16,7 @@ public class OyunKontrol : MonoBehaviour
 
     public void OyunuBitir()
     {
-        if (soğuktanÖldün || yakalandın || süreBitti)
+        if (süreBitti)
         {
             SceneManager.LoadScene("oyunBitti_öldün");
         }
